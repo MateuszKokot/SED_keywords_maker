@@ -1,0 +1,8 @@
+{
+  "host": "your_db_host",
+  "port": "tour_db_port",
+  "database": "your_db_name",
+  "userName": "your_username",
+  "password": "your_password",
+  "tableName": "your_table_name"
+}
