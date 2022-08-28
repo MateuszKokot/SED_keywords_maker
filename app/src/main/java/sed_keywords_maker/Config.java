@@ -10,7 +10,13 @@ import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+/**
+ * This class is tool for load and save config from file.
+ */
 public class Config {
+    /**
+     * Field od Config class
+     */
     private static String host;
     private static String port;
     private static String database;
@@ -20,7 +26,10 @@ public class Config {
     private static boolean configLoaded = false;
     public static final String CONFIG_FILE_PATH = "app/src/main/resources/config.json";
 
-
+    /***
+     * It is inner class of Config class. It is used for convert static fields
+     * of Config class to variables witch can save to file.
+     */
     private class AdapterConfig {
         private String host;
         private String port;
@@ -29,6 +38,9 @@ public class Config {
         private String password;
         private String tableName;
 
+        /**
+         * Constructor witch set up fields of Config class.
+         */
         AdapterConfig(){
             this.host = Config.getHost();
             this.port = Config.getPort();
@@ -72,6 +84,9 @@ public class Config {
         config.saveConfigToFileAdapter();
     }
 
+    /**
+     * This method print in console config variables loaded from file
+     */
     public static void showConfig(){
         System.out.println("[ Config ]");
         System.out.println(">Host: " + getHost());
@@ -81,6 +96,10 @@ public class Config {
         System.out.println(">Password: " + getPassword());
     }
 
+    /***
+     * This method is adapter between static fields in Config class and config file.
+     * It is used for saved config to file in saveConfigToFile() method.
+     */
     private void saveConfigToFileAdapter(){
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try {
@@ -94,6 +113,10 @@ public class Config {
         }
     }
 
+    /***
+     * Getters and Setters
+     * @return Fields of this class
+     */
     public static String getHost() {
         return host;
     }

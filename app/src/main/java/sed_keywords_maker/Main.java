@@ -14,6 +14,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Main class of this app.
+ */
 public class Main {
     public static void main(String[] args) {
 

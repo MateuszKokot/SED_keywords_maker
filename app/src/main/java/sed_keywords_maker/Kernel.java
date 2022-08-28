@@ -3,7 +3,17 @@ package sed_keywords_maker;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+/**
+ * This class is tool for convert data from file to database records.
+ */
 public class Kernel {
+    /**
+     * This method convert data from file to database record if conditions are true.
+     * @param isConnection Put in here DBConnection.isDBConnected(). This method return TRUE if
+     *                     connection witch database is done.
+     * @param isFileLoaded Put in AllWordsContainer.isFileLoaded(). This method return TRUE if
+     *                     file is loaded.
+     */
     public static void doYourJob (boolean isConnection, boolean isFileLoaded){
 
         int ordinalNumberOfWord = 1;

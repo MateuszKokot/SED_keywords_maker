@@ -4,9 +4,12 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
+/**
+ * This class is tool for load data from file.
+ */
 public class AllWordsContainer {
 
-    public static final String SOURCE_FILE_NAME = "odm.txt";
+    public static final String SOURCE_FILE_NAME = "odm.txt"; // Data file name
     private static File file;
     private static FileInputStream fileInputStream;
     private static InputStreamReader inputStreamReader;
@@ -15,7 +18,9 @@ public class AllWordsContainer {
     private static boolean hasNextLine = true;
     private static String lineRead;
 
-
+    /**
+     * This method load file to field of this class, prepare stream and bufferedReader
+     */
     public static void loadFile(){
         try{
             ClassLoader loader = AllWordsContainer.class.getClassLoader();
@@ -29,6 +34,11 @@ public class AllWordsContainer {
         }
     }
 
+    /**
+     * This method check that the file has next line to read and if yes it save this line to field
+     * of this class LINEREAD and return boolean;
+     * @return Return true if file has next line to read and false if it has not.
+     */
     public static boolean hasLineToRead(){
         try {
             lineRead = bufferedReader.readLine();
@@ -39,6 +49,10 @@ public class AllWordsContainer {
         return hasNextLine;
     }
 
+    /**
+     * This method split read line and convert it to table of Strings.
+     * @return Table of Strings contain words and keywords. First item is word and rest are keywords.
+     */
     public static ArrayList<Word> getNextKeyWord(){
 
         String[] splitedLine = lineRead.split(",\\s+");
@@ -50,6 +64,11 @@ public class AllWordsContainer {
         return  words;
     }
 
+    /**
+     * This method replace characters witch makes problems in SQL request.
+     * @param str String to clean from bad characters.
+     * @return Cleaned string without bad characters.
+     */
     private static String replaceBadCharacterInString (String str){
         String cleanedString ="";
 
@@ -72,6 +91,9 @@ public class AllWordsContainer {
         return cleanedString;
     }
 
+    /**
+     * This method release resource
+     */
     public static void releaseResource (){
 
         if (bufferedReader != null){
